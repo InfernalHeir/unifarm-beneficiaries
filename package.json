@@ -4,7 +4,7 @@
    "main": "./dist/server.js",
    "license": "MIT",
    "scripts": {
-      "dev": "nodemon ./dist/server",
+      "dev": "nodemon --ext '.ts' server",
       "clean": "rimraf ./dist",
       "killport": "kill-port --port 3001",
       "build": "export NODE_ENV=prod && babel --extensions '.ts,.json' --out-dir dist --config-file ./.babelrc ./",
@@ -16,6 +16,7 @@
       "ajv": "^8.2.0",
       "body-parser": "^1.19.0",
       "concurrently": "^6.0.2",
+      "cors": "^2.8.5",
       "dotenv": "^8.2.0",
       "express": "^4.17.1",
       "express-rate-limit": "^5.2.6",

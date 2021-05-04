@@ -5,6 +5,7 @@ import { getBeneficiaryDetails, vaildateAddress } from "./helpers"
 import { NO_BENEFICIARY_FOUND, NO_ETHEREUM_ADDRESS } from "./error"
 import { config } from "dotenv"
 import helmet from "helmet"
+import cors from "cors"
 
 // set the config from env
 config()
@@ -14,6 +15,8 @@ const app: Application = express()
 const HOSTNAME: string = String(process.env.HOSTNAME)
 const PORT: number = Number(process.env.PORT)
 
+// enable cors
+app.use(cors())
 // body parser
 app.use(json())
 app.use(urlencoded({ extended: true }))
