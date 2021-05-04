@@ -1,0 +1,14 @@
+{
+   "presets": ["@babel/preset-typescript", "@babel/preset-env"],
+   "plugins": [
+      "@babel/plugin-transform-modules-commonjs",
+      ["inline-json-import", {}]
+   ],
+   "ignore": [
+      "./node_modules",
+      "./.babelrc",
+      "./.gitignore",
+      "./package.json",
+      "./tsconfig.json"
+   ]
+}

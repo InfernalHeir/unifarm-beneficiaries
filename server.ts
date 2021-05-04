@@ -55,6 +55,6 @@ app.get("/beneficiaries", (req: Request, res: Response) => {
    })
 })
 
-app.listen(PORT, () => {
+app.listen(PORT, HOSTNAME, () => {
    console.log(`server started at ${PORT} port`)
 })
