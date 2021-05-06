@@ -8,7 +8,7 @@ import helmet from "helmet"
 import cors from "cors"
 
 // set the config from env
-config()
+config({ path: `.env.${process.env.NODE_ENV}` })
 
 const app: Application = express()
 
