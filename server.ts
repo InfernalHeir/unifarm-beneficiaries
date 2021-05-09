@@ -6,6 +6,8 @@ import { NO_BENEFICIARY_FOUND, NO_ETHEREUM_ADDRESS } from "./error"
 import { config } from "dotenv"
 import helmet from "helmet"
 import cors from "cors"
+import Beneficiaries from "./models/beneficiaries"
+import { Op } from "sequelize"
 
 // set the config from env
 config({ path: `.env.${process.env.NODE_ENV}` })
@@ -27,6 +29,7 @@ app.use(helmet())
 // get details
 app.get("/beneficiaries", (req: Request, res: Response) => {
    const beneficiaryAddress = req.query.msgSender as string
+
    if (!beneficiaryAddress || !vaildateAddress(beneficiaryAddress)) {
       return res.status(400).json({
          status: false,
@@ -36,7 +39,17 @@ app.get("/beneficiaries", (req: Request, res: Response) => {
       })
    }
 
+   /* Beneficiaries({
+      where: {
+        [Op.and]: [
+          { authorId: 12 },
+          { status: 'active' }
+        ]
+      }
+    }); */
+
    const isHolder = getBeneficiaryDetails(beneficiaryAddress)
+
    if (!isHolder) {
       return res.status(400).json({
          status: false,

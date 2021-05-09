@@ -5,11 +5,15 @@
    "license": "MIT",
    "scripts": {
       "dev": "nodemon --ext '.ts' server",
+      "create:json": "ts-node ./scripts/index.ts",
       "clean": "rimraf ./dist",
-      "killport": "kill-port --port 3001",
+      "killport": "kill-port --port 5432",
       "build": "export NODE_ENV=prod && babel --extensions '.ts,.json' --out-dir dist --config-file ./.babelrc ./",
       "server": "pm2 start -f ./dist/server.js",
-      "start": "npm-run-all clean killport build server"
+      "start": "npm-run-all clean killport build server",
+      "create:database": "sequelize db:create",
+      "migrations": "sequelize db:migrate",
+      "seeders": "sequelize db:seed:all"
    },
    "dependencies": {
       "@ethersproject/address": "^5.1.0",
@@ -23,6 +27,7 @@
       "dotenv": "^8.2.0",
       "express": "^4.17.1",
       "express-rate-limit": "^5.2.6",
+      "fs-extra": "^10.0.0",
       "fuse.js": "^6.4.6",
       "helmet": "^4.6.0",
       "kill-port": "^1.6.1",
@@ -32,8 +37,11 @@
       "pg": "^8.6.0",
       "pm2": "^4.5.6",
       "postgres": "^1.0.2",
+      "reflect-metadata": "^0.1.13",
       "rimraf": "^3.0.2",
-      "sequelize": "^6.6.2"
+      "sequelize": "^6.6.2",
+      "sequelize-typescript": "^2.1.0",
+      "web3-utils": "^1.3.5"
    },
    "devDependencies": {
       "@babel/cli": "^7.13.16",
@@ -47,6 +55,7 @@
       "@typescript-eslint/eslint-plugin": "^4.22.0",
       "babel-plugin-inline-json-import": "^0.3.2",
       "prettier": "^2.2.1",
+      "sequelize-cli": "^6.2.0",
       "ts-node": "^9.1.1",
       "typescript": "^4.2.4"
    }
