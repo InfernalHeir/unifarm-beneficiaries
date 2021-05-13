@@ -1,26 +1,28 @@
-"use strict"
-const { Model } = require("sequelize")
-export default (sequelize, DataTypes) => {
-   class Beneficiaries extends Model {
-      /**
-       * Helper method for defining associations.
-       * This method is not a part of Sequelize lifecycle.
-       * The `models/index` file will call this method automatically.
-       */
-      static associate(models) {
-         // define association here
-      }
-   }
-   Beneficiaries.init(
-      {
-         beneficiaryAddress: DataTypes.STRING,
-         vestAddress: DataTypes.STRING,
-         claimTokens: DataTypes.STRING,
-      },
-      {
-         sequelize,
-         modelName: "Beneficiaries",
-      }
-   )
-   return Beneficiaries
+"use strict";
+
+import { Model, Optional } from "sequelize/types";
+import { DataTypes } from "sequelize";
+import { db } from "./";
+
+const sequelize = db.sequelize;
+
+interface BeneficiaryAttributes {
+   beneficiaryAddress: string;
+   vestAddress: string;
+   claimTokens: string;
+   jobStatus: number;
 }
+
+interface BeneficiaryCreationAttributes
+   extends Optional<BeneficiaryAttributes, "beneficiaryAddress"> {}
+
+interface BeneficiaryInstance
+   extends Model<BeneficiaryAttributes, BeneficiaryCreationAttributes>,
+      BeneficiaryAttributes {}
+
+export const BeneficiaryModel = sequelize.define("Beneficiary", {
+   beneficiaryAddress: DataTypes.STRING,
+   vestAddress: DataTypes.STRING,
+   claimTokens: DataTypes.STRING,
+   jobStatus: DataTypes.NUMBER,
+});

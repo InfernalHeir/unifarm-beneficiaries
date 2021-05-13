@@ -1,7 +1,7 @@
-require("dotenv").config()
+require("dotenv").config();
 
 const dbConfig = {
-   development: {
+   dev: {
       username: "postgres",
       password: "root",
       database: "Ufarm_Holders",
@@ -15,13 +15,13 @@ const dbConfig = {
       host: "127.0.0.1",
       dialect: "postgres",
    },
-   production: {
+   prod: {
       username: "root",
       password: null,
       database: "database_production",
       host: "127.0.0.1",
       dialect: "postgres",
    },
-}
+};
 
-module.exports = dbConfig
+export default dbConfig;

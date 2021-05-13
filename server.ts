@@ -1,76 +1,91 @@
-import express, { Application, Request, Response } from "express"
-import { json, urlencoded } from "body-parser"
-import morgan from "morgan"
-import { getBeneficiaryDetails, vaildateAddress } from "./helpers"
-import { NO_BENEFICIARY_FOUND, NO_ETHEREUM_ADDRESS } from "./error"
-import { config } from "dotenv"
-import helmet from "helmet"
-import cors from "cors"
-import Beneficiaries from "./models/beneficiaries"
-import { Op } from "sequelize"
+import express, { Application, Request, Response } from "express";
+import { json, urlencoded } from "body-parser";
+import morgan from "morgan";
+import { getBeneficiaryDetails, vaildateAddress } from "./helpers";
+import { NO_BENEFICIARY_FOUND, NO_ETHEREUM_ADDRESS } from "./error";
+import { config } from "dotenv";
+import helmet from "helmet";
+import cors from "cors";
+import { BeneficiaryModel } from "./models/beneficiaries";
+import _ from "lodash";
+import { logger } from "./logger";
+import { addressValidtion } from "./vaildation";
+import { QueryTypes } from "sequelize";
+import { check, query, validationResult } from "express-validator";
 
 // set the config from env
-config({ path: `.env.${process.env.NODE_ENV}` })
+config({ path: `.env.${process.env.NODE_ENV}` });
 
-const app: Application = express()
+const app: Application = express();
 
-const HOSTNAME: string = String(process.env.HOSTNAME)
-const PORT: number = Number(process.env.PORT)
+const HOSTNAME: string = String(process.env.HOSTNAME);
+const PORT: number = Number(process.env.PORT);
 
 // enable cors
-app.use(cors())
+app.use(cors());
 // body parser
-app.use(json())
-app.use(urlencoded({ extended: true }))
+app.use(json());
+app.use(urlencoded({ extended: true }));
 // setup morgan
-app.use(morgan("combined"))
+app.use(morgan("combined"));
 // setup helmet
-app.use(helmet())
+app.use(helmet());
 // get details
-app.get("/beneficiaries", (req: Request, res: Response) => {
-   const beneficiaryAddress = req.query.msgSender as string
 
-   if (!beneficiaryAddress || !vaildateAddress(beneficiaryAddress)) {
-      return res.status(400).json({
-         status: false,
-         errCode: 400,
-         data: {},
-         message: NO_ETHEREUM_ADDRESS,
-      })
-   }
+app.get(
+   "/beneficiaries",
+   addressValidtion,
+   async (req: Request, res: Response) => {
+      try {
+         const beneficiaryAddress = req.query.msgSender as string;
+         // check beneficiary on pg server
+         const beneficiary = await BeneficiaryModel.findAll({
+            raw: true,
+            where: {
+               beneficiaryAddress: beneficiaryAddress,
+            },
+         });
 
-   /* Beneficiaries({
-      where: {
-        [Op.and]: [
-          { authorId: 12 },
-          { status: 'active' }
-        ]
+         if (_.isEmpty(beneficiary)) {
+            logger.error(
+               `BENEFICIARY_EMPTY: No Beneficiary Found for ${beneficiaryAddress}`
+            );
+            return res.status(400).json({
+               code: 400,
+               data: [],
+            });
+         }
+
+         const data = beneficiary.map((values) => {
+            return {
+               beneficiaryAddress: values.beneficiaryAddress,
+               vestAddress: values.vestAddress,
+               claimTokens: values.claimTokens,
+            };
+         });
+
+         return res.status(200).json({
+            code: 200,
+            data,
+         });
+      } catch (error) {
+         logger.error(`ROUTE_EXECEPTION: reason ${error.message}`);
+         return res.status(400).json({
+            code: 400,
+            data: [],
+         });
       }
-    }); */
-
-   const isHolder = getBeneficiaryDetails(beneficiaryAddress)
-
-   if (!isHolder) {
-      return res.status(400).json({
-         status: false,
-         errCode: 400,
-         data: {
-            isBenificiary: false,
-            holderDetails: [],
-         },
-         message: NO_BENEFICIARY_FOUND,
-      })
    }
+);
 
-   return res.json({
-      status: true,
-      data: {
-         isBenificiary: true,
-         holderDetails: isHolder,
-      },
-   })
-})
+app.use(function (req, res, next) {
+   logger.error(`BAD_REQUEST: one bad request found from ${req.ip}`);
+   res.status(400).json({
+      code: 400,
+      message: "BAD_REQUEST:: no route found.",
+   });
+});
 
 app.listen(PORT, HOSTNAME, () => {
-   console.log(`server started at ${PORT} port`)
-})
+   console.log(`server started at ${PORT} port`);
+});
