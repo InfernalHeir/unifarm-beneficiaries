@@ -10,7 +10,7 @@
       "killport": "kill-port --port 5432",
       "build": "export NODE_ENV=prod && babel --extensions '.ts,.json' --out-dir dist --config-file ./.babelrc ./",
       "server": "pm2 start -f ./dist/server.js",
-      "start": "npm-run-all clean killport build server",
+      "start": "export NODE_ENV=prod && npm-run-all clean killport build server",
       "create:database": "sequelize db:create",
       "migrations": "sequelize db:migrate:undo:all &&  sequelize db:migrate",
       "seeders": "sequelize db:seed:all"

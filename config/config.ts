@@ -1,4 +1,6 @@
-require("dotenv").config();
+import { config } from "dotenv";
+
+config({ path: `.env.${process.env.NODE_ENV}` });
 
 const dbConfig = {
    dev: {
@@ -16,10 +18,10 @@ const dbConfig = {
       dialect: "postgres",
    },
    prod: {
-      username: "root",
-      password: null,
-      database: "database_production",
-      host: "127.0.0.1",
+      username: process.env.DB_USER,
+      password: process.env.DB_PASSWORD,
+      database: process.env.DB_NAME,
+      host: process.env.DB_HOSTNAME,
       dialect: "postgres",
    },
 };
