@@ -26,4 +26,4 @@ const dbConfig = {
    },
 };
 
-module.exports = { dbConfig };
+module.exports = dbConfig;

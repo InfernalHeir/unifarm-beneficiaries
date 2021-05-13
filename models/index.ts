@@ -3,9 +3,9 @@
 import fs from "fs";
 import path from "path";
 import { Sequelize, DataTypes } from "sequelize";
-import { dbConfig } from "../config/config";
+import dbConfig from "../config/config";
 const basename = path.basename(__filename);
-const env = process.env.NODE_ENV || "development";
+const env = process.env.NODE_ENV || "dev";
 const config = dbConfig[env];
 
 interface dbModals {
