@@ -1,4 +1,4 @@
-import { config } from "dotenv";
+const { config } = require("dotenv");
 
 config({ path: `.env.${process.env.NODE_ENV}` });
 
@@ -26,4 +26,4 @@ const dbConfig = {
    },
 };
 
-export default dbConfig;
+module.exports = { dbConfig };
