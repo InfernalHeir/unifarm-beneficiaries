@@ -1,8 +1,6 @@
 import express, { Application, Request, Response } from "express";
 import { json, urlencoded } from "body-parser";
 import morgan from "morgan";
-import { getBeneficiaryDetails, vaildateAddress } from "./helpers";
-import { NO_BENEFICIARY_FOUND, NO_ETHEREUM_ADDRESS } from "./error";
 import { config } from "dotenv";
 import helmet from "helmet";
 import cors from "cors";
@@ -10,8 +8,6 @@ import { BeneficiaryModel } from "./models/beneficiaries";
 import _ from "lodash";
 import { logger } from "./logger";
 import { addressValidtion } from "./vaildation";
-import { QueryTypes } from "sequelize";
-import { check, query, validationResult } from "express-validator";
 
 // set the config from env
 config({ path: `.env.${process.env.NODE_ENV}` });

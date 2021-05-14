@@ -9,6 +9,9 @@
       "./.babelrc",
       "./.gitignore",
       "./package.json",
-      "./tsconfig.json"
+      "./tsconfig.json",
+      "./seeders",
+      "./migrations",
+      "./json"
    ]
 }

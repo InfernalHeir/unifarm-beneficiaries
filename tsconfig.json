@@ -11,12 +11,5 @@
       "experimentalDecorators": true,
       "emitDecoratorMetadata": true
    },
-   "exclude": [
-      "node_modules",
-      "./dist",
-      "models",
-      "seeders",
-      "migrations",
-      "config"
-   ]
+   "exclude": ["node_modules", "./dist", "seeders", "migrations", "config"]
 }

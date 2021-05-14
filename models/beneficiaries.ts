@@ -2,7 +2,7 @@
 
 import { Model, Optional } from "sequelize/types";
 import { DataTypes } from "sequelize";
-import { db } from "./";
+import { db } from ".";
 
 const sequelize = db.sequelize;
 
