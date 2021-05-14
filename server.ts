@@ -4,11 +4,14 @@ import morgan from "morgan";
 import { config } from "dotenv";
 import helmet from "helmet";
 import cors from "cors";
-import { BeneficiaryModel } from "./models/beneficiaries";
+
 import _ from "lodash";
 import { logger } from "./logger";
 import { addressValidtion } from "./vaildation";
 
+import models from "./models";
+
+const BeneficiaryModel = models.Unifarm_Beneficiaries;
 // set the config from env
 config({ path: `.env.${process.env.NODE_ENV}` });
 
@@ -52,7 +55,7 @@ app.get(
             });
          }
 
-         const data = beneficiary.map((values) => {
+         const data = beneficiary.map((values: any) => {
             return {
                beneficiaryAddress: values.beneficiaryAddress,
                vestAddress: values.vestAddress,

@@ -11,7 +11,6 @@ async function main() {
          beneficiaryAddress: item.userWalletAddress,
          vestAddress: VEST_ADDRESS,
          claimTokens: toWei(String(item.claimToken)),
-         jobStatus: 0,
          createdAt: new Date(),
          updatedAt: new Date(),
       };

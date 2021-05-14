@@ -26,3 +26,22 @@
 {"message":"BAD_REQUEST: one bad request found from 127.0.0.1","level":"error"}
 {"message":"BAD_REQUEST: one bad request found from 127.0.0.1","level":"error"}
 {"message":"INVALID_ADDR:: invalid ethereum address.","level":"error"}
+{"message":"BENEFICIARY_EMPTY: No Beneficiary Found for 0xF6C172dd45ABd82E1F067801B309A7fFC4977971","level":"error"}
+{"message":"BENEFICIARY_EMPTY: No Beneficiary Found for 0x828954676f2634D404251f05e4F619FF83f7EceB","level":"error"}
+{"message":"BENEFICIARY_EMPTY: No Beneficiary Found for 0x828954676f2634D404251f05e4F619FF83f7EceB","level":"error"}
+{"message":"BENEFICIARY_EMPTY: No Beneficiary Found for 0x828954676f2634D404251f05e4F619FF83f7EceB","level":"error"}
+{"message":"ROUTE_EXECEPTION: reason Cannot read property 'findAll' of undefined","level":"error"}
+{"message":"ROUTE_EXECEPTION: reason Cannot read property 'findAll' of undefined","level":"error"}
+{"message":"ROUTE_EXECEPTION: reason Cannot read property 'findAll' of undefined","level":"error"}
+{"message":"ROUTE_EXECEPTION: reason Cannot read property 'findAll' of undefined","level":"error"}
+{"message":"ROUTE_EXECEPTION: reason Cannot read property 'findAll' of undefined","level":"error"}
+{"message":"ROUTE_EXECEPTION: reason Cannot read property 'findAll' of undefined","level":"error"}
+{"message":"ROUTE_EXECEPTION: reason Cannot read property 'findAll' of undefined","level":"error"}
+{"message":"ROUTE_EXECEPTION: reason Cannot read property 'findAll' of undefined","level":"error"}
+{"message":"ROUTE_EXECEPTION: reason Cannot read property 'findAll' of undefined","level":"error"}
+{"message":"ROUTE_EXECEPTION: reason Cannot read property 'findAll' of undefined","level":"error"}
+{"message":"ROUTE_EXECEPTION: reason Cannot read property 'findAll' of undefined","level":"error"}
+{"message":"BENEFICIARY_EMPTY: No Beneficiary Found for 0x828954676f2634D404251f05e4F619FF83f7EceB","level":"error"}
+{"message":"ROUTE_EXECEPTION: reason Cannot read property 'findAll' of undefined","level":"error"}
+{"message":"ROUTE_EXECEPTION: reason password authentication failed for user \"root\"","level":"error"}
+{"message":"ROUTE_EXECEPTION: reason database \"database_production\" does not exist","level":"error"}
