@@ -1,7 +1,7 @@
 {
    "name": "unifarm-token-beneficiaries-list",
    "version": "1.0.0",
-   "main": "server.ts",
+   "main": "./dist/server.js",
    "license": "MIT",
    "scripts": {
       "dev": "export NODE_ENV=dev && nodemon --ext '.ts' server",
