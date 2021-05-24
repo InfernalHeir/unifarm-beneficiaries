@@ -1,1 +1,2 @@
-export const VEST_ADDRESS: string = "0x361c78689669555b1910e69bFde4a9A68e5eff3a"
+export const VEST_ADDRESS: string =
+   "0xE1B5d30A93c717BDea786D3beE150792D8A827e7";
