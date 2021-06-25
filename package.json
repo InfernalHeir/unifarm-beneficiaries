@@ -1,7 +1,7 @@
 {
    "name": "unifarm-token-beneficiaries-list",
    "version": "1.0.0",
-   "main": "./dist/server.js",
+   "main": "server.ts",
    "license": "MIT",
    "scripts": {
       "dev": "export NODE_ENV=dev && nodemon --ext '.ts' server",
@@ -12,7 +12,7 @@
       "server": "pm2 start -f ./dist/server.js",
       "start": "export NODE_ENV=prod && npm-run-all clean killport build server",
       "create:database": "sequelize db:create",
-      "migrations": "sequelize db:migrate:undo:all && sequelize db:migrate",
+      "migrations": "sequelize db:migrate:undo && sequelize db:migrate",
       "seeders": "sequelize db:seed:all"
    },
    "dependencies": {
