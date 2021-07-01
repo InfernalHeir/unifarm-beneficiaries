@@ -81,6 +81,5 @@ app.use(function (req, res, next) {
 });
 
 app.listen(PORT, HOSTNAME, async () => {
-   console.log("models", BeneficiaryModel);
    console.log(`server started at ${PORT} port`);
 });
