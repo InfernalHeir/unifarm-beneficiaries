@@ -13,7 +13,7 @@
       "start": "export NODE_ENV=prod && npm-run-all clean killport build server",
       "create:database": "sequelize db:create",
       "migrations": "sequelize db:migrate:undo && sequelize db:migrate",
-      "seeders": "sequelize db:seed:all"
+      "seeders": "sequelize db:seed:undo && sequelize db:seed:all"
    },
    "dependencies": {
       "@ethersproject/address": "^5.1.0",

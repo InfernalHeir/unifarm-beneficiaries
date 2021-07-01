@@ -12,8 +12,8 @@ async function main() {
    const json = Stakers.map((item) => {
       return {
          beneficiaryAddress: item.userAddress,
-         vesting: UNIFARM_STAKERS,
-         category: "UNIFARM_STAKERS",
+         vesting: ORO_EARLY_FIVE_THOUSAND,
+         category: "ORO_EARLY_ADOPTERS",
          claimTokens: toWei("1000"),
          createdAt: new Date(),
          updatedAt: new Date(),
@@ -22,7 +22,7 @@ async function main() {
 
    const jsonContent = JSON.stringify(json);
    // now write a json file
-   fs.writeFileSync("./json/Unifarm_Stakers.json", jsonContent);
+   fs.writeFileSync("./json/ORO_EARLY_ADOPTERS_5000.json", jsonContent);
 }
 
 main().then(() => {
