@@ -12,9 +12,9 @@ async function main() {
    const json = Stakers.map((item) => {
       return {
          beneficiaryAddress: item.userAddress,
-         vesting: ORO_EARLY_ONE_THOUSAND,
+         vesting: UNIFARM_STAKERS,
          category: "UNIFARM_STAKERS",
-         claimTokens: toWei("200"),
+         claimTokens: toWei("1000"),
          createdAt: new Date(),
          updatedAt: new Date(),
       };

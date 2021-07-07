@@ -206,5 +206,9 @@
    {
       "holderAddress": "0x5be798bf258ac5319e74428a66e635df491de2b2",
       "totalHoldingTill": 5000
+   },
+   {
+      "holderAddress": "0x4FD337724597a364120714c5f312731ba01D5aE2",
+      "totalHoldingTill": 5000
    }
 ]
