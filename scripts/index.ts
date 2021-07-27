@@ -11,8 +11,8 @@ async function main() {
       return {
          beneficiaryAddress: item.userAddress,
          vesting: UNIFARM_STAKERS,
-         category: "UNIFARM_STAKERS",
-         claimTokens: toWei("200"),
+         category: "EARLY ADOPTERS",
+         claimTokens: toWei("500"),
          createdAt: new Date(),
          updatedAt: new Date(),
       };
